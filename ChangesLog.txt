@@ -1,0 +1,19 @@
+Sửa thuộc tính [Domestic Or International] của Tour thành DomesticOrInternational
+
+Đổi tên thuộc tính passengerCode của Price thành TypeOfPassengerCode
+
+Sửa primary key của Price thành (TourCode, TypeOfPassengerCode)
+
+Sửa foreign key của Price từ Price(TourCode) đến Tour(TourCode) (cũ là từ Tour(TourCode) đến Price(TourCode))
+
+Thêm foreign key từ Passenger đến Booking
+
+Sửa primary của Like thành (memID, TourCode)
+
+Sửa primary của GuideTour thành (empID, TourCode)
+
+Sửa ComfirmedID thành CheckerEmployee
+
+Sửa primary key của Price thành (TourCode, TypeOfPassengerCode, PriceName)
+
+Sửa kiểu dữ liệu của các thuộc tính của các relation
