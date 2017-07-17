@@ -141,6 +141,7 @@ CREATE TABLE dbo.Tour
   DomesticOrInternational CHAR,
   Detail                  NVARCHAR(MAX),
   Slot                    INT,
+  DeptTime                Date,
   ContentOfEmployeeID     DECIMAL(18)
     CONSTRAINT FK_Tour_Employee
     REFERENCES Employee
