@@ -172,9 +172,17 @@ ON
 AFTER 
     INSERT, UPDATE
 AS
-    DECLARE @day INT, @date DATE
+    DECLARE @day INT, @date DATE, @deptTime DATE
     SELECT @date = PassportExpireTime
+
     FROM inserted
+
+    SELECT @deptTime = Tour.DeptTime
+    FROM Passenger
+    JOIN Booking
+    ON Passenger.BookingCode = Booking.Code
+    JOIN Tour
+    ON Booking.TourCode = Tour.Code
 
     SET @day = YEAR(GETDATE()) - YEAR(@date)
 
@@ -183,6 +191,10 @@ AS
             RAISERROR ('Passport Out Of Dated',16,1)
             ROLLBACK TRANSACTION
         END
+
+    IF (@deptTime > @date)
+        BEGIN
+            RAISERROR ('Passport will expire before department', 16, 1)
+            ROLLBACK TRANSACTION
+        END
 GO
-
-
